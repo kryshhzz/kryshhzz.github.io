@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="theme-color" content="#121212" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title></title>
+    
+    <style type="text/css" media="all">
+      @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500;600;700;800&display=swap');
+      
+      :root {
+        --base : #f45c36;
+        --dm : #121212;
+        --dm : rgba(0,0,0,98%);
+        --dm2 : #121212;
+        --high : rgba(255,255,255,80%);
+        --medium : rgba(255,255,255,60%);
+        --low : rgba(255,255,255,38%);
+      }
+      
+      * {
+        box-sizing: border-box;
+        margin : 0;
+      }
+      
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        font-family : "Dosis",sans-serif;
+        font-weight : 500;
+        background : var(--dm);
+      }
+    </style>
+    
+  </head>
+  <body>
+    
+    <!-- header starts -->
+    <style type="text/css" media="all">
+      #header {
+        width : 100%;
+        color : var(--high);
+        padding : .75em;
+        background : rgba(0,0,0,50%);
+        position: fixed;
+        top : 0;
+        z-index: 99;
+        display: flex;
+        justify-content: space-between;
+        backdrop-filter: blur(1em);
+      }
+      #menu {
+        color : var(--medium);
+        flex-basis: 30%;
+        display : flex;
+        justify-content: space-around;
+      }
+      #menu a {
+        text-decoration: none;
+        color : var(--textgray);
+      }
+      
+      #menu a:hover {
+        color : var(--base);
+      }
+      
+      @media (max-width: 768px){
+        #header {
+          display: grid;
+          grid-auto-columns: 1fr;
+          text-align: center;
+          grid-row-gap: .5em;
+        }
+      }
+    </style>
+    
+    <div id="header">
+      <h3>Ivon<span style="color:var(--base)">Zebra</span></h3>
+      <div id="menu">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Contact</a>
+      </div>
+    </div>
+    
+    <!-- header end -->
+    
+    
+    
+    <div id="wrap">
+      <style type="text/css" media="all">
+        #main {
+          width : 100%;
+        }
+        
+        #fold {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+        
+        #heroImg {
+          width : 100%;
+          grid-column: 1/2;
+          grid-row : 1/2;
+        }
+        
+        #heroText {
+          background : rgba(0,0,0,.1);
+          backdrop-filter: blur(1em);
+          grid-column: 1/2;
+          grid-row : 1/2;
+          place-self: center end;
+          height : 100%;
+          width : 40%;
+          clip-path: polygon(0% 0% , 100% 0% , 100% 100%, 0% 100%  ) ;
+          padding : 1em 2em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        
+        #heroText div  {
+          font-size: 1.25em;
+        }
+        #heroText div h1 {
+          color : var(--high);
+        }
+        
+        #heroText div p {
+          color : var(--medium);
+          font-size : .8em;
+        }
+        
+        #heroText div i {
+          font-size : 2em;
+          color : white;
+        }
+        
+        #heroText div a {
+          text-decoration: none;
+          font-size: 1rem;
+          border-radius: 2em;
+          padding : .5em 3em;
+          font-weight : 800;
+          background : var(--base);
+          color : var(--dm);
+        }
+        
+        #heroText div a:hover {
+          background : var(--high);
+        }
+        
+        @media (max-width : 768px){
+          #fold{
+            height : 100vh;
+          }
+          #heroImg {
+            margin-top : 10vh;
+          }
+          #heroText {
+            width : 100%;
+            backdrop-filter: blur(0em);
+            background :rgba(0,0,0,45%) ;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom : 10vh;
+          }
+          
+        }
+        
+        /* below fold */
+        
+        #cardHolder {
+          width : 100%;
+          display: grid;
+          grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+          grid-gap : 2em;
+          padding : 3em;
+          background : rgba(0,0,0,50%);
+        }
+        
+        #info {
+          width : 100%;
+          padding : .75em 1em;
+          text-align: center;
+          color : white;
+          text-transform: uppercase;
+          margin-top: 2em ;
+          font-weight : 400;
+        }
+        
+        .card {
+          border-radius : 2em;
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+        
+        .card img {
+          width : 100%;
+          border-radius : 2em;
+          grid-column: 1/2;
+          grid-row : 1/2;
+        }
+        
+        .card .layer {
+          background : linear-gradient(transparent,rgba(0,0,0,.5),rgba(0,0,0,1));
+          grid-column : 1/2;
+          grid-row : 1/2;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          border-radius : 2em;
+          color : var(--high);
+          padding : 1em 0;
+        }
+        
+        #trustMenu {
+          width: 100%;
+          display : grid;
+          grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+          place-items: center center;
+          grid-gap: 1em;
+          padding : 1em;
+          color : var(--medium);
+        }
+        
+        #trustMenu b {
+          text-transform: uppercase;
+          font-weight : 600;
+        }
+        
+        #rating , #count {
+          background : var(--dm2);
+          padding : 1em;
+          border-radius : 1em;
+          display : grid;
+          grid-template-columns: 1fr;
+          place-items: center center;
+          grid-gap : .75em;
+        }
+        
+        #count h4{
+          font-size : 1.25em;
+          color : var(--base);
+        }
+        
+        #stars i {
+          font-size : 1.5em;
+        }
+        .filled {
+          color : var(--base);
+        }
+       
+      </style>
+      <div id="main">
+        <div id="fold">
+          <img id="heroImg" src="https://images.pexels.com/photos/17840/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="workoutbody" />
+          <div id="heroText">
+            <div>
+              <i class="bx bxs-quote-alt-left"></i>
+              <h1>Ivon for workout <br /> is the perfect choice for you </h1>
+              <i class="bx bxs-quote-alt-right"></i>
+              <p> - Arnold Schwarzenegger</p>
+              <br />
+              <br />
+              <a href="">Join Ivon</a>
+            </div>
+          </div>
+        </div>
+        
+        <div id="trustMenu">
+          
+          <div id="rating">
+            <b>Rating</b>
+            <div id="stars">
+              <i class="bx bxs-star filled"></i>
+              <i class="bx bxs-star filled"></i>
+              <i class="bx bxs-star filled"></i>
+              <i class="bx bxs-star filled"></i>
+              <i class="bx bxs-star-half filled"></i>
+            </div>
+          </div>
+    
+          <div id="count">
+            <b>Customers served</b>
+            <h4>65238+</h4>
+          </div>
+        </div>
+        
+        <div id="info">
+          <b>our team of expert trainers</b>
+        </div>
+        
+        <div id="cardHolder">
+          <div class="card" id="card1">
+            <img src="https://images.pexels.com/photos/2951545/pexels-photo-2951545.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Trainer 1" />
+            <div class="layer">
+              <b>Baldwin Males</b>         
+            </div>
+          </div>
+          <div class="card" id="card2">
+            <img src="https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Trainer 2" />
+            <div class="layer">
+              <b>Jessica Charlotte</b>        
+            </div>
+          </div>
+          <div class="card" id="card3">
+            <img src="https://images.pexels.com/photos/8868952/pexels-photo-8868952.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="Trainer 3" />
+            <div class="layer">
+              <b>Peter Clem</b>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+  </body>
+</html>
