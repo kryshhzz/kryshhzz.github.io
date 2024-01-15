@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#121212" />
     
     <title>Corus</title>
@@ -10,7 +10,8 @@
     <style type="text/css" media="all">
       
       :root {
-        --white : #fff;
+        --white : #fff; 
+        --black : #121212;
       }
       
       * {
@@ -27,39 +28,52 @@
         font-size : 16px;
         font-weight : 500;
         background : #fff;
+      }  
+      .hide {
+        display : none !important;
       } 
+      .notifs {
+        padding : 1em;
+      }
       .alert-bowl {
         position : fixed;
         width : 100vw;
         height : 100vh; 
         z-index: 100;
-        background : #FFFFFF90;
+        background : #1212124b;
 
         display : flex;
         justify-content : center;
-        palce-items : center;
+        place-items : center; 
       } 
       .alert-cont { 
         background : var(--white); 
-        padding : 1em; 
+        padding : 1em;  
+        color : var(--black); 
+        border-radius : .25em;
 
-        display : grid;
-        grid-template-columns : 1fr;
-        place-items : center;
-        grid-gap : 1em;
+        display : flex; 
+        flex-direction : column;
+        justify-content: center;
+        align-items : center;
+        gap : 1em;
+      } 
+      .main-bowl {
+        padding : 1em;
       }
     </style>
     
   </head>
-  <body>
+  <body> 
+  <div class="main-bowl">
     <input type="text" id="messageInput" required>  
-  <input type="number" id="typeInput" value="1" required>
-  <button id='button' onclick="sendMessage()">Send</button> 
-
-  <div class='alert-bowl'>
+    <input type="number" id="typeInput" value="1" required>
+    <button id='button' onclick="sendMessage()">Send</button> 
+  </div>
+  <div class='alert-bowl hide'>
       <div class='alert-cont'> 
           <p class='alert-msg'></p> 
-          <button onclick='document.getElementByClassName("alert-bowl").style.display="none";'>OK</button>
+          <button onclick='document.querySelector(".alert-bowl").classList.add("hide");'>OK</button>
       </div>
   </div>
 
@@ -110,7 +124,6 @@
     const messageInput = document.getElementById('messageInput');
     const typeInput = document.getElementById('typeInput');
     const sendButton = document.getElementById('button');
-    const acceptButton = document.getElementById('accept'); 
 
     sendButton.addEventListener('click', sendMessage);
 
@@ -141,12 +154,14 @@
       audioElement.src = src; 
 
       audioElement.addEventListener("loadeddata", () => { 
-        docwrite('loaded audio')
+        docwrite('loaded audio') 
         const currentDate = new Date();
         const currentHour = currentDate.getHours();
         const currentMinute = currentDate.getMinutes();
         const currentSecond = currentDate.getSeconds(); 
-        const currentMillisecond = currentDate.getMilliseconds();
+        const currentMillisecond = currentDate.getMilliseconds(); 
+
+        alert('CURRENT : '+currentHour+currentMinute+currentMinute+currentMillisecond)
 
         const targetMinute =  parseInt(playAt["min"]);
         const targetSecond = parseInt(playAt["sec"]); 
@@ -173,6 +188,11 @@
     let notifs = document.querySelector('.notifs') 
     function docwrite(notif){
       notifs.innerHTML += notif+'<br>'
+    } 
+
+    function alertBox(txt){
+      document.querySelector(".alert-msg").innerHTML = txt; 
+      document.querySelector(".alert-bowl").classList.remove("hide");
     }
   </script>
   </body>
