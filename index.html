@@ -34,12 +34,19 @@
       } 
       .notifs {
         padding : 1em; 
+        font-size : .9em;
         width : 100%; 
+        scroll-behavior: smooth;
         height : 47vh;
         overflow : scroll; 
         background : var(--black);
         color : var(--white); 
-        font-family : monospace;
+        font-family : monospace; 
+
+        display : grid;
+        grid-template-columns : 1fr;
+        place-items : center start;
+        grid-gap : .75em;
       }
       .alert-bowl {
         position : fixed;
@@ -230,7 +237,7 @@
   <script>
     let notifs = document.querySelector('.notifs') 
     function docwrite(notif){
-      notifs.innerHTML += notif+'<br>'
+      notifs.innerHTML += '<p>'+notif+'</p>'
     } 
 
     function alertBox(txt){
