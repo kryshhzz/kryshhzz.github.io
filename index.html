@@ -33,7 +33,12 @@
         display : none !important;
       } 
       .notifs {
-        padding : 1em;
+        padding : 1em; 
+        width : 100%; 
+        height : 47vh;
+        overflow : scroll; 
+        background : var(--black);
+        color : var(--white);
       }
       .alert-bowl {
         position : fixed;
@@ -193,7 +198,11 @@
     function alertBox(txt){
       document.querySelector(".alert-msg").innerHTML = txt; 
       document.querySelector(".alert-bowl").classList.remove("hide");
-    }
+    } 
+
+    notifs.addEventListener("DOMSubtreeModified", () => {
+      notifs.scrollTop = notifs.scrollHeight;  
+    });
   </script>
   </body>
 </html>
