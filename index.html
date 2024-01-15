@@ -64,16 +64,55 @@
         gap : 1em;
       } 
       .main-bowl {
-        padding : 1em;
+        padding : 1em; 
+        display : grid;
+        grid-template-columns: 1fr;
+        place-items : center ;
+        grid-gap : 1em;
+      } 
+      .main-bowl .input-bowl {
+        width : 100%; 
+
+        display : grid;
+        grid-template-columns: 1fr ;
+        place-items : center ;
+        grid-gap : 1em;
+      } 
+      .input-bowl div { 
+        width : 100%; 
+
+        display : grid;
+        grid-template-columns: 1fr .2fr;
+        place-items : center ;
+        grid-gap : .5em;
+      } 
+      .input-bowl input {
+        width : 100%; 
+        padding : .25em .75em;
+      } 
+      .input-bowl button {
+        width : 100%;
+        padding : .5em;
+      } 
+      .main-audio {
+        width : 100%;
       }
     </style>
     
   </head>
   <body> 
-  <div class="main-bowl">
-    <input type="text" id="messageInput" required>  
-    <input type="number" id="typeInput" value="1" required>
-    <button id='button' onclick="sendMessage()">Send</button> 
+  <div class="main-bowl"> 
+    <div class="input-bowl">
+      <div>
+        <input type="text" id="messageInput" required>  
+        <input type="number" id="typeInput" value="1" required>
+      </div>
+      <button id='button' onclick="sendMessage()">Send</button>  
+    </div> 
+    <audio controls>
+      <source src="my_audio.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio> 
   </div>
   <div class='alert-bowl hide'>
       <div class='alert-cont'> 
@@ -155,7 +194,7 @@
     } 
 
     function playSong(src,playAt) {
-      const audioElement = new Audio();
+      const audioElement = document.querySelector('.main-audio');
       audioElement.src = src; 
 
       audioElement.addEventListener("loadeddata", () => { 
