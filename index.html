@@ -223,6 +223,7 @@
                       + (targetMillisecond - currentMillisecond)
                       - (currentHour * 60 + currentMinute) * 60 * 1000;
 
+        timeDiffMs = 3000;
         docwrite('About to play'+timeDiffMs)
         setTimeout(() => {  
           docwrite('Playing ....')
