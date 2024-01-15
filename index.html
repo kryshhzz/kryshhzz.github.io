@@ -10,7 +10,7 @@
     <style type="text/css" media="all">
       
       :root {
-
+        --white : #fff;
       }
       
       * {
@@ -23,9 +23,30 @@
       }
       
       body {
-        font-family : sans-serif;
+        font-family : sans-serif; 
+        font-size : 16px;
         font-weight : 500;
         background : #fff;
+      } 
+      .alert-bowl {
+        position : fixed;
+        width : 100vw;
+        height : 100vh; 
+        z-index: 100;
+        background : #FFFFFF90;
+
+        display : flex;
+        justify-content : center;
+        palce-items : center;
+      } 
+      .alert-cont { 
+        background : var(--white); 
+        padding : 1em; 
+
+        display : grid;
+        grid-template-columns : 1fr;
+        place-items : center;
+        grid-gap : 1em;
       }
     </style>
     
@@ -34,7 +55,13 @@
     <input type="text" id="messageInput" required>  
   <input type="number" id="typeInput" value="1" required>
   <button id='button' onclick="sendMessage()">Send</button> 
-  <input type='checkbox' id="accept"> 
+
+  <div class='alert-bowl'>
+      <div class='alert-cont'> 
+          <p class='alert-msg'></p> 
+          <button onclick='document.getElementByClassName("alert-bowl").style.display="none";'>OK</button>
+      </div>
+  </div>
 
   <div class="notifs">
 
@@ -100,12 +127,9 @@
         docwrite('Data received: ' + event.data); 
         var recvd = JSON.parse(event.data);  
         if (recvd.type == '1'){
-          if (recvd.src != ''){  
-            acceptButton.addEventListener('change', function(){
-              if ( acceptButton.checked ){
-                playSong(recvd.src,recvd.playAt) 
-              }
-            });
+          if (recvd.src != ''){   
+              alertBox('A new song will be played')
+              playSong(recvd.src,recvd.playAt)
           } 
         }else if (recvd.type == '2'){
           docwrite(recvd.msg)
