@@ -51,9 +51,11 @@
       .alert-bowl {
         position : fixed;
         width : 100vw;
-        height : 100vh; 
+        height : 100vh;  
+        top : 0;
+        left : 0;
         z-index: 100;
-        background : #1212124b;
+        background : #12121266;
 
         display : flex;
         justify-content : center;
@@ -63,7 +65,7 @@
         background : var(--white); 
         padding : 1em;  
         color : var(--black); 
-        border-radius : .25em;
+        border-radius : .25em; 
 
         display : flex; 
         flex-direction : column;
@@ -108,7 +110,13 @@
     </style>
     
   </head>
-  <body> 
+  <body>  
+  <div class='alert-bowl hide'>
+      <div class='alert-cont'> 
+          <p class='alert-msg'></p> 
+          <button onclick='document.querySelector(".alert-bowl").classList.add("hide");'>OKAIES</button>
+      </div>
+  </div>
   <div class="main-bowl"> 
     <div class="input-bowl">
       <div>
@@ -119,13 +127,6 @@
     </div> 
     <audio controls class='main-audio' src=""></audio> 
   </div>
-  <div class='alert-bowl hide'>
-      <div class='alert-cont'> 
-          <p class='alert-msg'></p> 
-          <button onclick='document.querySelector(".alert-bowl").classList.add("hide");'>OK</button>
-      </div>
-  </div>
-
   <div class="notifs">
 
   </div>
