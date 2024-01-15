@@ -218,7 +218,7 @@
 
         docwrite('playing '+src+' at '+playAt["hour"]+':'+playAt["min"]+':'+playAt["sec"]+':'+playAt["ms"])
 
-        const timeDiffMs = (targetHour * 60 + targetMinute) * 60 * 1000
+        var timeDiffMs = (targetHour * 60 + targetMinute) * 60 * 1000
                       + (targetSecond - currentSecond) * 1000
                       + (targetMillisecond - currentMillisecond)
                       - (currentHour * 60 + currentMinute) * 60 * 1000;
