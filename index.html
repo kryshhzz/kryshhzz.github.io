@@ -161,8 +161,6 @@
         const currentSecond = currentDate.getSeconds(); 
         const currentMillisecond = currentDate.getMilliseconds(); 
 
-        alert('CURRENT : '+currentHour+currentMinute+currentMinute+currentMillisecond)
-
         const targetMinute =  parseInt(playAt["min"]);
         const targetSecond = parseInt(playAt["sec"]); 
         const targetHour =  parseInt(playAt["hour"]);  
@@ -175,7 +173,9 @@
                       + (targetMillisecond - currentMillisecond)
                       - (currentHour * 60 + currentMinute) * 60 * 1000;
 
-        setTimeout(() => {
+        docwrite('About to play')
+        setTimeout(() => {  
+          docwrite('Paying ....')
           audioElement.play();
         }, timeDiffMs); 
       }); 
